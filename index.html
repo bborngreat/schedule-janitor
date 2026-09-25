@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Outsource Your Boring Tasks</title>
+    <title>Mr. OddJobs - Outsource Your Boring Tasks</title>
     <!-- Google Fonts: Cormorant Garamond & Parkinsans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -170,8 +170,8 @@
         }
 
         h1 {
-            font-size: clamp(3rem, 6vw, 4.2rem);
-            line-height: 1.1;
+            font-size: clamp(2.8rem, 5.5vw, 4rem);
+            line-height: 1.15;
             margin-bottom: 1.5rem;
         }
 
@@ -276,12 +276,12 @@
         }
 
         ul.example-list li::before {
-            content: "▹";
+            content: "•";
             position: absolute;
             left: 0;
             color: var(--accent-gold);
-            font-size: 1.2rem;
-            font-weight: bold;
+            font-size: 1.5rem;
+            line-height: 1;
         }
 
         /* Numbered Steps */
@@ -305,7 +305,7 @@
             font-size: 2.5rem;
             color: var(--accent-gold);
             font-weight: 700;
-            opacity: 0.7;
+            opacity: 0.8;
         }
 
         /* Decorative Divider */
@@ -345,7 +345,7 @@
             border: none;
             color: var(--text-primary);
             font-family: 'Parkinsans', sans-serif;
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 600;
             padding: 1.5rem 2rem;
             text-align: left;
@@ -368,7 +368,7 @@
         }
 
         .category-toggle .chevron {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             transition: transform 0.35s ease;
             color: var(--accent-gold);
             line-height: 1;
@@ -386,7 +386,7 @@
         }
 
         .service-category.open .category-content {
-            max-height: 1200px;
+            max-height: 1500px;
             padding: 0 2rem 2rem 2rem;
         }
 
@@ -410,6 +410,7 @@
         .category-content ul.example-list li {
             font-size: 1.05rem;
             margin-bottom: 1rem;
+            color: var(--text-muted);
         }
 
         /* Responsive Breakpoints */
@@ -421,14 +422,14 @@
                 padding: 1.5rem;
             }
             h1 {
-                font-size: 2.5rem;
+                font-size: 2.3rem;
             }
             h2 {
-                font-size: 2rem;
+                font-size: 1.9rem;
             }
             .category-toggle {
                 padding: 1.25rem 1.5rem;
-                font-size: 1.15rem;
+                font-size: 1.1rem;
             }
             .service-category.open .category-content {
                 padding: 0 1.5rem 1.5rem 1.5rem;
@@ -461,7 +462,7 @@
         <!-- Hero Section -->
         <div class="hero-section">
             <div class="hero-graphic">
-                <img src="1788311590795.png" alt="Bright Borngreat Headshot">
+                <img src="1788311590795.png" alt="Bright Borngreat Headshot" onerror="this.src='https://placehold.co/160x160/001A33/D4AF37?text=Bright';">
             </div>
             <h1>Got a boring job on your to-do list that you keep procrastinating?<br><span style="color: var(--text-primary); font-style: italic;">Give it to me.</span></h1>
             <p class="lead">Let me handle your repetitive, tedious, and annoying digital tasks for you, so you can enjoy your evenings and weekends in peace doing the things that actually matter to you.</p>
@@ -477,7 +478,7 @@
         <h2>What can I do?</h2>
         <p>Any creative or professional project you just won't enjoy doing yourself.</p>
 
-        <!-- Accordion: Data & Admin -->
+        <!-- Accordion 1: Data & admin -->
         <div class="service-category" id="cat-data">
             <button class="category-toggle" aria-expanded="false">
                 <span class="category-title">📋 Data & admin</span>
@@ -485,45 +486,107 @@
             </button>
             <div class="category-content">
                 <p>I’ll handle all the messy data entry, data cleanup, and information gathering for you, so you don't waste your weekend doing it yourself.</p>
-                <p class="example-label">Examples:</p>
+            </div>
+        </div>
+
+        <!-- Accordion 2: Spreadsheet creation -->
+        <div class="service-category" id="cat-spreadsheet-create">
+            <button class="category-toggle" aria-expanded="false">
+                <span class="category-title">🏗️ Spreadsheet creation</span>
+                <span class="chevron">▼</span>
+            </button>
+            <div class="category-content">
                 <ul class="example-list">
                     <li>I can enter the raw data from a document, research paper, or presentation into a clean spreadsheet you can read and interpret easily</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Accordion 3: Spreadsheet cleanup -->
+        <div class="service-category" id="cat-spreadsheet-cleanup">
+            <button class="category-toggle" aria-expanded="false">
+                <span class="category-title">🧹 Spreadsheet cleanup</span>
+                <span class="chevron">▼</span>
+            </button>
+            <div class="category-content">
+                <ul class="example-list">
                     <li>If you've already got a messy, incomprehensible spreadsheet with the data, I add formulas, charts, and other enhancements to make it easy to understand and fun to use</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Accordion 4: Research -->
+        <div class="service-category" id="cat-research">
+            <button class="category-toggle" aria-expanded="false">
+                <span class="category-title">🧐 Research</span>
+                <span class="chevron">▼</span>
+            </button>
+            <div class="category-content">
+                <ul class="example-list">
                     <li>If you've got a topic you need to research, some suppliers you need to learn about, or some assignment you need deep context on, don't sweat it. Just give it to me. I'll do all the heavy digging, and give you a detailed report, comprehensive summary on my findings, or both (whichever you prefer).</li>
                 </ul>
             </div>
         </div>
 
-        <!-- Accordion: Documents -->
-        <div class="service-category" id="cat-docs">
+        <!-- Accordion 5: Transcription -->
+        <div class="service-category" id="cat-transcription">
             <button class="category-toggle" aria-expanded="false">
-                <span class="category-title">📝 Documents</span>
+                <span class="category-title">✍️ Transcription</span>
                 <span class="chevron">▼</span>
             </button>
             <div class="category-content">
-                <p>Anything involving clean, simple to read text documents, I'm your guy.</p>
-                <p class="example-label">Examples:</p>
+                <p>If you've got a long audio, YouTube video, interview, or podcast, and you want to transcribe it into clean, well formatted text you can read instead, hit me up. Just shoot the link, or send me the media file, and I'll get straight to work.</p>
+            </div>
+        </div>
+
+        <!-- Accordion 6: Translation -->
+        <div class="service-category" id="cat-translation">
+            <button class="category-toggle" aria-expanded="false">
+                <span class="category-title">🔄 Translation</span>
+                <span class="chevron">▼</span>
+            </button>
+            <div class="category-content">
                 <ul class="example-list">
-                    <li>If you've got a long audio, YouTube video, interview, or podcast, and you want to transcribe it into clean, well formatted text you can read instead, hit me up. Just shoot the link, or send me the media file, and I'll get straight to work.</li>
                     <li>If you've got some text in English which you want to translate into French, Spanish, or German…. hit me up mon ami /mi amigo/mein Freund! And if you've got it in any of these languages and want to translate it into any of these languages (😂), I do that too! French to Spanish. German to English. And everything in between, I'm your guy. Just shoot the doc over, and I'll get it done in no time!</li>
-                    <li>Got a long article, interview, podcast, or YouTube video you just don't wanna read or watch, but still wanna know what it says? Don't sweat it. Just send the link. I'll sit through it, and present you with a condensed, actionable brief and summary of the key points.</li>
-                    <li>If you've got a document in serious need of some cleaning services, your prayers just got answered. Proofreading. Editing. Formatting. Inserting relevant graphics. I do it all. Give me the ugly, raw text, and receive a document that'll bring tears of joy into your eyes every time you open it!</li>
                 </ul>
             </div>
         </div>
 
-        <!-- Accordion: Small digital problems -->
-        <div class="service-category" id="cat-digital">
+        <!-- Accordion 7: Content Review & Summary -->
+        <div class="service-category" id="cat-content-review">
             <button class="category-toggle" aria-expanded="false">
-                <span class="category-title">🛠 Small digital problems</span>
+                <span class="category-title">🤏 Content Review & Summary</span>
+                <span class="chevron">▼</span>
+            </button>
+            <div class="category-content">
+                <p>Got a long article, interview, podcast, or YouTube video you just don't wanna read or watch, but still wanna know what it says? Don't sweat it. Just send the link. I'll sit through it, and present you with a condensed, actionable brief and summary of the key points.</p>
+            </div>
+        </div>
+
+        <!-- Accordion 8: Document cleanup -->
+        <div class="service-category" id="cat-doc-cleanup">
+            <button class="category-toggle" aria-expanded="false">
+                <span class="category-title">📄 Document cleanup</span>
+                <span class="chevron">▼</span>
+            </button>
+            <div class="category-content">
+                <p>If you've got a document in serious need of some cleaning services, your prayers just got answered. Proofreading. Editing. Formatting. Inserting relevant graphics. I do it all. Give me the ugly, raw text, and receive a document that'll bring tears of joy into your eyes every time you open it!</p>
+            </div>
+        </div>
+
+        <!-- Accordion 9: Custom micro-app development -->
+        <div class="service-category" id="cat-custom-app">
+            <button class="category-toggle" aria-expanded="false">
+                <span class="category-title">🧑‍💻 Custom micro-app development</span>
                 <span class="chevron">▼</span>
             </button>
             <div class="category-content">
                 <p>Got a software itch you desperately need to scratch, but there just isn't an app that does it quite right for you? Let me BUILD ONE just for YOU!</p>
                 <p class="example-label">Examples:</p>
                 <ul class="example-list">
-                    <li>Want a custom habit or event tracker, with custom features you can't find anywhere? Just describe it to me in simple words, and I'll build it for you.</li>
+                    <li>Want a habit or event tracker, with personalized features you can't find anywhere? Just describe it to me in simple words, and I'll build it for you.</li>
                     <li>Want your own mini-game which shows a cartoon face of you on the loading screen or homepage? Let's build it, impress your friends with it, and have fun with your loved ones playing a game with your name on it!</li>
+                    <li>Want a simple custom tool for automating or streamlining certain processes within your business? Just tell me what you want to see, and I'll bring it to life.</li>
                     <li>Got any specific problems in your life that no tech billionaire has thought to build a gigantic app for? You don't have to wait anymore and keep suffering. Just send me what you want to see, and let's bring your vision to life today!</li>
                 </ul>
             </div>
@@ -608,14 +671,6 @@
                 e.stopPropagation();
                 const category = button.closest('.service-category');
                 const isOpen = category.classList.contains('open');
-
-                // Close all other open categories (optional - comment out to allow multiple open)
-                document.querySelectorAll('.service-category.open').forEach(openCat => {
-                    if (openCat !== category) {
-                        openCat.classList.remove('open');
-                        openCat.querySelector('.category-toggle').setAttribute('aria-expanded', 'false');
-                    }
-                });
 
                 // Toggle current
                 if (isOpen) {
