@@ -26,6 +26,9 @@
             margin: 0;
             padding: 0;
         }
+          button:focus-visible {
+    outline: none;
+        }
 
         body {
             background-color: var(--bg-color);
@@ -212,13 +215,6 @@
             color: var(--accent-gold-hover);
         }
 
-        .decorative-hr {
-            border: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border-highlight), transparent);
-            margin: 3.5rem 0;
-        }
-
         footer {
             text-align: center;
             margin-top: 5rem;
@@ -263,7 +259,6 @@
         
         <div class="hero-section">
             <div class="hero-graphic">
-                <!-- Cleaner, thinner outlined question mark -->
                 <svg viewBox="0 0 24 24">
                     <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
                     <line x1="12" y1="17" x2="12.01" y2="17"/>
@@ -283,7 +278,7 @@
                 </button>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        <p>Yes. My actual legal name is Bright Borngreat. My ‘birth’ name is Mohammed Abubakr Sadiq. But I converted to Christianity very young (basically before I could eat or crawl).</p>
+                        <p>Yes. My actual legal name is Bright Borngreat. My 'birth' name is Mohammed Abubakr Sadiq. But I converted to Christianity very young (basically before I could eat or crawl).</p>
                         <p>Bright Borngreat, therefore, was a name my mom adopted for me, and is not my father's name or his family name.</p>
                         <p>I still use my birth name as middle names, but for official purposes and simplicity, Bright Borngreat it is!</p>
                         <p>I know my name sounds like a pseudonym, but it's not.</p>
@@ -299,8 +294,9 @@
                 </button>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        <p>As discussed on previous pages, I only ask for or collect relevant, non-confidential information that I need to successfully deliver my services.</p>
-                        <p>For a more in-depth explanation of what information I do (and don't) collect, how I use and handle that information, and how long I keep it, refer to my <a href="privacy-policy.html">privacy policy</a>.</p>
+                        <p>I only ask for relevant, non-confidential information that I need to do the job. I'll never ask for passwords, logins, banking details, 2FA codes or ID.</p>
+                        <p>And like anyone online, my device can be hacked, stolen or infected, so my rule is simple: don't send anything you wouldn't say out loud in public without giving me a heads-up first.</p>
+                        <p>For the full details on what I collect, how I use it and how long I keep it, see my <a href="privacy-policy.html">privacy policy</a>.</p>
                     </div>
                 </div>
             </div>
@@ -314,8 +310,8 @@
                 <div class="faq-answer">
                     <div class="faq-answer-content">
                         <p>I'm in no way an expert, and I won't pretend to be. All my services, as you can tell, are general, tedious, and require very little specialization or credentials to do well.</p>
-                        <p>Hence, having an “expert” charge you predatory rates or put you on a gigantic wait-list is unnecessary and a waste of your resources.</p>
-                        <p>I, on the other hand, am free, very willing, and have a reputation to protect. I cannot afford to do sloppy work because all it takes is one negative review to shut my little operation down.</p>
+                        <p>Hence, having an "expert" charge you predatory rates or put you on a gigantic wait-list is unnecessary and a waste of your resources.</p>
+                        <p>I, on the other hand, am available, very willing, and have a reputation to protect. I cannot afford to do sloppy work because all it takes is one negative review to shut my little operation down.</p>
                         <p>Therefore, I'll be committed to provide you the best possible results, as opposed to an established credentialed expert, for whom you're just another name on a long spreadsheet of clients.</p>
                     </div>
                 </div>
@@ -324,13 +320,13 @@
             <!-- Question 4 -->
             <div class="faq-item">
                 <button class="faq-question">
-                    <span>4. What kind of information is requested or avoided?</span>
+                    <span>4. What kinds of tasks can you do?</span>
                     <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
                 </button>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        <p>As discussed on previous pages, only non-confidential information will be requested for my services.</p>
-                        <p>For a more in-depth explanation of what I collect (and what I don't), and how I handle that data, please refer to my <a href="privacy-policy.html">privacy policy</a>.</p>
+                        <p>Boring, repetitive digital work I can do remotely: data entry and organization, research, transcription, translation, document formatting, content summaries, spreadsheet cleanup, and simple web app development.</p>
+                        <p>If your task isn't on that list, ask me before you give up. I'll tell you quickly if it's something I can handle.</p>
                     </div>
                 </div>
             </div>
@@ -338,14 +334,12 @@
             <!-- Question 5 -->
             <div class="faq-item">
                 <button class="faq-question">
-                    <span>5. How do I get a refund if I'm not satisfied?</span>
+                    <span>5. What tasks won't you take?</span>
                     <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
                 </button>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        <p>As you can already tell, I'm a tiny, relatively slim one-man operation. And hence, I lack the sophisticated tech stack required to process stuff like refunds and cashbacks seamlessly and reliably.</p>
-                        <p>That's why I have an explicit preview step, where I send you the full complete work to scrutinize and confirm satisfaction or ask for revisions before money ever exchanges hands.</p>
-                        <p>That way, you do not pay until you're absolutely certain that you're getting exactly what you want to see.</p>
+                        <p>Anything illegal, fraudulent, deceptive, or unsafe. I also won't take tasks that need access to accounts or information I shouldn't have. If a task requires that, I'll politely decline.</p>
                     </div>
                 </div>
             </div>
@@ -353,14 +347,136 @@
             <!-- Question 6 -->
             <div class="faq-item">
                 <button class="faq-question">
-                    <span>6. Where are you located?</span>
+                    <span>6. How much does it cost?</span>
                     <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
                 </button>
                 <div class="faq-answer">
                     <div class="faq-answer-content">
-                        <p>I'm based in Accra, Ghana — the sunny, chaotic, endlessly loud capital city where the internet is fast enough to keep me employed and the jollof is good enough to keep me alive.</p>
-                        <p>I work entirely online, so it doesn't really matter where you're reading this from. Whether you're in London, Lagos, New York, or somewhere I've never heard of, as long as you've got an internet connection and a boring task, we're good.</p>
-                        <p>So no, you don't need to be in Ghana to hire me. I'm basically a one-man digital ghost — location irrelevant, output what matters.</p>
+                        <p>It depends on the job, so I can't give one fixed price.</p>
+                        <p>Simple tasks like document formatting start around $5. Bigger projects like web app development can run $30 or more. I'll quote you before we start, so there are no surprises.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>7. Do you charge by the hour?</span>
+                    <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>No. Your job is priced by how complex it is, not by how long it takes me. You never have to worry about inflated hours or high hourly rates.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>8. When do I pay?</span>
+                    <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>After I've finished, and you've previewed the results and you're satisfied. Once payment is confirmed, I send your full, completed work.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 9 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>9. How do I get a refund if I'm not satisfied?</span>
+                    <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>As you can already tell, I'm a tiny, relatively slim one-man operation. And hence, I lack the sophisticated tech stack required to process stuff like refunds and cashbacks seamlessly and reliably.</p>
+                        <p>That's why I have an explicit preview step, where I send you the full complete work to scrutinize and confirm satisfaction or ask for revisions before money ever exchanges hands.</p>
+                        <p>That way, you do not pay until you're absolutely certain that you're getting exactly what you want to see. Your first revision is included, so anything I missed or misunderstood gets fixed before you pay.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 10 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>10. What counts as a revision?</span>
+                    <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>A revision adjusts the original job. For example: "Can you change the font to match the example I sent?"</p>
+                        <p>A new job isn't a revision. For example: "Can you also translate it into French?" when you originally asked for Spanish. New requests are quoted separately, and I'm happy to do them.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 11 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>11. What information should I send you?</span>
+                    <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>On the form, just the overview of the task you want me to perform.</p>
+                        <p>Then when I reach out and we agree on a fair price, send everything else that's relevant: files, screenshots, links, examples, and instructions.</p>
+                        <p>And if you have a specific format, deadline, tone, or naming convention, tell me in the chat before I get to work. The clearer your instructions are in the beginning, the less back-and-forth we'll need.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 12 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>12. Will you ever ask for my passwords or login details?</span>
+                    <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Never. I won't ask for passwords, account logins, banking credentials, credit card info, 2-factor authentication codes, or government ID. If I need to see something in your account, a screenshot or a typed-out copy usually does the job.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 13 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>13. Do we need to have calls or meetings?</span>
+                    <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>No. Everything happens by message. No Zoom calls, no project-management software.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 14 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>14. Do I have to leave a review?</span>
+                    <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>No. I may ask for one after your project is delivered, and you're free to say no. But if you had an amazing experience, and do want to leave one, you can send a text, email, or video testimonial, and you can ask for it to be shown anonymously (without your name or identity).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question 15 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    <span>15. What happens after the job is done?</span>
+                    <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                </button>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Totally up to you. You can simply say “okay, bye” and block me. You can send me another job you've got so we run it all back again. Or we can stay in touch, become good friends and live happily ever after!</p>
+                        <p>You don't have to be in any sort of relationship or contact with me if you don't want to. So whatever you choose, there'll be no hard feelings.</p>
                     </div>
                 </div>
             </div>
@@ -368,9 +484,8 @@
         </div>
 
         <footer>
-            <a href="privacy-policy.html">Privacy Policy</a> | 
-            <a href="faq.html">FAQs</a> |
-            <a href="onboarding.html">Onboarding</a>
+            <a href="index.html">Home</a>  |
+            <a href="privacy-policy.html">Privacy Policy</a>
             <p style="margin-top: 1rem;">Bright Borngreat &copy; <span id="current-year"></span>. All rights reserved.</p>
         </footer>
 
