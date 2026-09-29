@@ -3,39 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mr. OddJobs - Outsource Your Boring Tasks</title>
-    <!-- Google Fonts: Cormorant Garamond & Parkinsans -->
+    <title>Bright Borngreat - Your Personal Schedule Janitor</title>
+    <!-- Google Fonts: Cormorant Garamond (Headings) & Parkinsans (Body Text) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Parkinsans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Parkinsans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --bg-color: #001A33;
-            --card-bg: rgba(0, 40, 80, 0.5);
-            --border-subtle: rgba(212, 175, 55, 0.12);
-            --border-highlight: rgba(212, 175, 55, 0.3);
+            --card-bg: rgba(0, 40, 80, 0.55);
+            --card-hover-bg: rgba(0, 50, 100, 0.65);
+            --border-subtle: rgba(212, 175, 55, 0.15);
+            --border-highlight: rgba(212, 175, 55, 0.4);
             --text-primary: #EDEADE;
             --text-muted: #BACEE9;
             --accent-gold: #D4AF37;
-            --accent-gold-hover: #E5C158;
-            --max-width: 720px;
+            --accent-gold-hover: #F0C846;
+            --accent-glow: rgba(212, 175, 55, 0.25);
+            --max-width: 760px;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+
+        }
+            button:focus-visible {
+            outline: none;
         }
 
         body {
             background-color: var(--bg-color);
             background-image: 
-                linear-gradient(to right, rgba(255,255,255,.03) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(255,255,255,.03) 1px, transparent 1px);
-            background-size: 50px 50px;
+                linear-gradient(to right, rgba(255,255,255,.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,.02) 1px, transparent 1px);
+            background-size: 40px 40px, 40px 40px;
             color: var(--text-primary);
             font-family: 'Parkinsans', sans-serif;
-            line-height: 1.7;
+            line-height: 1.75;
             font-size: 1.1rem;
             overflow-x: hidden;
             padding-top: 4px;
@@ -47,14 +54,14 @@
             top: 0;
             left: 0;
             height: 4px;
-            background: linear-gradient(90deg, var(--accent-gold), #fff);
+            background: linear-gradient(90deg, var(--accent-gold), #FFF);
             width: 0%;
             z-index: 9999;
             transition: width 0.1s ease-out;
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
         }
 
-        /* Navigation Header / Hamburger */
+        /* Header Navigation */
         .site-header {
             position: relative;
             max-width: var(--max-width);
@@ -71,13 +78,13 @@
 
         .hamburger-btn {
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid var(--border-subtle);
             border-top: 1px solid var(--border-highlight);
             border-radius: 12px;
-            width: 44px;
-            height: 44px;
+            width: 46px;
+            height: 46px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -85,12 +92,12 @@
             gap: 5px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         .hamburger-btn:hover {
             border-color: var(--accent-gold);
-            background: rgba(0, 40, 80, 0.8);
+            background: rgba(0, 50, 100, 0.8);
         }
 
         .hamburger-btn span {
@@ -114,7 +121,7 @@
 
         .dropdown-menu {
             position: absolute;
-            top: 54px;
+            top: 56px;
             right: 0;
             width: 200px;
             background: rgba(0, 30, 60, 0.95);
@@ -124,7 +131,7 @@
             border-top: 1px solid var(--border-highlight);
             border-radius: 14px;
             padding: 0.5rem;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
             display: flex;
             flex-direction: column;
             gap: 0.25rem;
@@ -150,15 +157,15 @@
         }
 
         .dropdown-menu a:hover {
-            background: rgba(212, 175, 55, 0.1);
+            background: rgba(212, 175, 55, 0.15);
             color: var(--accent-gold);
         }
 
-        /* Main Container */
+        /* Layout Container */
         .container {
             max-width: var(--max-width);
             margin: 0 auto;
-            padding: 1.5rem 1.5rem 8rem 1.5rem;
+            padding: 1.5rem 1.5rem 6rem 1.5rem;
         }
 
         /* Typography */
@@ -170,44 +177,53 @@
         }
 
         h1 {
-            font-size: clamp(2.8rem, 5.5vw, 4rem);
+            font-size: clamp(2.6rem, 5.5vw, 3.8rem);
             line-height: 1.15;
             margin-bottom: 1.5rem;
         }
 
+        h1 em {
+            color: var(--text-primary);
+            font-style: italic;
+            font-weight: 600;
+        }
+
         h2 {
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            margin-top: 4rem;
+            font-size: clamp(2rem, 4vw, 2.7rem);
+            margin-top: 4.5rem;
             margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
             padding-bottom: 0.75rem;
+            line-height: 1.25;
         }
 
         p {
-            margin-bottom: 1.8rem;
+            margin-bottom: 1.6rem;
+            color: var(--text-primary);
         }
 
         .lead {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             color: var(--text-muted);
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             line-height: 1.7;
-            font-weight: 300;
+            font-weight: 400;
         }
 
-        /* Hero Graphic */
-        .hero-graphic {
-            margin: 0 auto 2rem auto;
-            width: 160px;
-            height: 160px;
+        /* Headshot Image Styling */
+        .headshot-wrapper {
+            margin: 0 auto 2.5rem auto;
+            width: 170px;
+            height: 170px;
             border-radius: 50%;
             overflow: hidden;
             border: 3px solid var(--accent-gold);
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.35), 0 10px 25px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 30px var(--accent-glow), 0 12px 25px rgba(0, 0, 0, 0.6);
             background-color: var(--bg-color);
+            position: relative;
         }
         
-        .hero-graphic img {
+        .headshot-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -218,94 +234,273 @@
         /* Hero Section */
         .hero-section {
             text-align: center;
-            padding: 1rem 0 4rem 0;
+            padding: 1rem 0 3rem 0;
         }
 
         .cta-container {
-            margin: 3rem 0;
+            margin: 2.5rem 0 1rem 0;
         }
 
-        /* Button */
+        /* Buttons */
         .btn-gold {
             display: inline-block;
             background: linear-gradient(135deg, var(--accent-gold), #C19A2B);
             color: #000;
             font-family: 'Parkinsans', sans-serif;
-            font-weight: 600;
-            font-size: 1.2rem;
+            font-weight: 700;
+            font-size: 1.15rem;
             padding: 1.1rem 2.5rem;
             border-radius: 50px;
             text-decoration: none;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 2px 0 rgba(255,255,255,0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 2px 0 rgba(255,255,255,0.3);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
+            cursor: pointer;
+            border: none;
         }
 
         .btn-gold:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3), 0 10px 25px rgba(0,0,0,0.5);
             background: linear-gradient(135deg, var(--accent-gold-hover), var(--accent-gold));
         }
 
         /* Glassmorphism Cards */
-        .glass-box {
+        .glass-card {
             background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--border-subtle);
             border-top: 1px solid var(--border-highlight);
             border-radius: 20px;
-            padding: 2.5rem;
-            margin: 3rem 0;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            padding: 2rem 2.25rem;
+            margin: 2.5rem 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
             position: relative;
         }
 
-        /* List Styling */
-        ul.example-list {
-            list-style: none;
-            padding-left: 0;
+        .glass-card.highlight {
+            border-color: var(--border-highlight);
+            background: linear-gradient(145deg, rgba(0, 50, 100, 0.6), rgba(0, 30, 60, 0.7));
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.15), 0 15px 35px rgba(0, 0, 0, 0.4);
         }
 
-        ul.example-list li {
-            position: relative;
-            padding-left: 2rem;
-            margin-bottom: 1.2rem;
+        /* Blockquotes */
+        blockquote.quote-box {
+            border-left: 4px solid var(--accent-gold);
+            padding: 1.25rem 1.75rem;
+            margin: 2.5rem 0;
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: 0 16px 16px 0;
+            font-style: italic;
+            font-size: 1.2rem;
             color: var(--text-primary);
         }
 
-        ul.example-list li::before {
+        /* Lists Styling */
+        ul.bullet-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 1.5rem 0;
+        }
+
+        ul.bullet-list li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        ul.bullet-list li::before {
             content: "•";
             position: absolute;
-            left: 0;
+            left: 0.2rem;
             color: var(--accent-gold);
             font-size: 1.5rem;
             line-height: 1;
         }
 
         /* Numbered Steps */
-        .steps-list {
-            list-style: none;
-            padding: 0;
+        .steps-container {
+            margin: 2.5rem 0;
         }
 
-        .steps-list li {
-            position: relative;
-            padding-left: 3.5rem;
+        .step-item {
+            display: flex;
+            gap: 1.25rem;
             margin-bottom: 2rem;
-            font-size: 1.15rem;
+            align-items: flex-start;
         }
 
-        .steps-list li span.step-num {
-            position: absolute;
-            left: 0;
-            top: -5px;
+        .step-number {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.5rem;
-            color: var(--accent-gold);
             font-weight: 700;
-            opacity: 0.8;
+            color: var(--accent-gold);
+            line-height: 1;
+            min-width: 40px;
+        }
+
+        .step-body {
+            flex: 1;
+            font-size: 1.1rem;
+            padding-top: 0.2rem;
+        }
+
+        /* Bio Card Styling */
+        .bio-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-highlight);
+            border-radius: 24px;
+            padding: 2.25rem;
+            margin: 3rem 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .bio-card-header {
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+            }
+        }
+
+        .bio-card .headshot-wrapper {
+            margin: 0 auto;
+            flex-shrink: 0;
+        }
+
+        .bio-details {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+        }
+
+        .bio-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            font-size: 1.05rem;
+            border-bottom: 1px dashed rgba(212, 175, 55, 0.15);
+            padding-bottom: 0.5rem;
+        }
+
+        .bio-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .bio-label {
+            font-weight: 700;
+            color: var(--accent-gold);
+            min-width: 140px;
+        }
+
+        .bio-value {
+            color: var(--text-primary);
+            flex: 1;
+        }
+
+        /* Accordion / Dropdown Styles */
+        .accordion-group {
+            margin: 2.5rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .service-accordion {
+            border: 1px solid var(--border-subtle);
+            border-top: 1px solid var(--border-highlight);
+            border-radius: 16px;
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            overflow: hidden;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .service-accordion:hover {
+            border-color: var(--border-highlight);
+            background: var(--card-hover-bg);
+        }
+
+        .accordion-header {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 1.25rem 1.75rem;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            transition: color 0.2s ease;
+        }
+
+        .accordion-header:hover {
+            color: var(--accent-gold);
+        }
+
+        .accordion-header .title-text {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .accordion-header .chevron {
+            font-size: 0.9rem;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--accent-gold);
+        }
+
+        .service-accordion.open .chevron {
+            transform: rotate(180deg);
+        }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.45s ease, padding 0.3s ease;
+            padding: 0 1.75rem;
+        }
+
+        .service-accordion.open .accordion-body {
+            max-height: 1500px;
+            padding: 0 1.75rem 1.75rem 1.75rem;
+        }
+
+        .accordion-body p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .accordion-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .example-subtitle {
+            font-weight: 600;
+            color: var(--accent-gold);
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
         }
 
         /* Decorative Divider */
@@ -316,136 +511,65 @@
             margin: 4rem 0;
         }
 
-        /* Closing Section */
+        /* Closing CTA Block */
         .closing-section {
             text-align: center;
-            margin-top: 5rem;
-        }
-
-        /* ---- ACCORDION / DROPDOWN STYLES ---- */
-        .service-category {
-            margin-bottom: 1.5rem;
-            border: 1px solid var(--border-subtle);
-            border-top: 1px solid var(--border-highlight);
-            border-radius: 16px;
+            margin-top: 4rem;
+            padding: 3rem 1.5rem;
             background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            overflow: hidden;
-            transition: border-color 0.3s ease;
+            border-radius: 24px;
+            border: 1px solid var(--border-highlight);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
         }
 
-        .service-category:hover {
-            border-color: var(--border-highlight);
-        }
-
-        .category-toggle {
-            width: 100%;
-            background: transparent;
-            border: none;
-            color: var(--text-primary);
-            font-family: 'Parkinsans', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            padding: 1.5rem 2rem;
-            text-align: left;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-            transition: color 0.2s ease;
-        }
-
-        .category-toggle:hover {
-            color: var(--accent-gold);
-        }
-
-        .category-toggle .category-title {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .category-toggle .chevron {
-            font-size: 1.1rem;
-            transition: transform 0.35s ease;
-            color: var(--accent-gold);
-            line-height: 1;
-        }
-
-        .service-category.open .category-toggle .chevron {
-            transform: rotate(180deg);
-        }
-
-        .category-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.45s ease, padding 0.3s ease;
-            padding: 0 2rem;
-        }
-
-        .service-category.open .category-content {
-            max-height: 1500px;
-            padding: 0 2rem 2rem 2rem;
-        }
-
-        .category-content p {
+        .footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
             color: var(--text-muted);
-            margin-bottom: 1.5rem;
-            font-size: 1.05rem;
-        }
-
-        .category-content .example-label {
-            font-weight: 600;
-            color: var(--accent-gold);
-            margin-bottom: 0.75rem;
-            font-size: 1.1rem;
-        }
-
-        .category-content ul.example-list {
-            margin-bottom: 0;
-        }
-
-        .category-content ul.example-list li {
-            font-size: 1.05rem;
-            margin-bottom: 1rem;
-            color: var(--text-muted);
+            font-size: 0.95rem;
         }
 
         /* Responsive Breakpoints */
-        @media (max-width: 768px) {
+        @media (max-width: 600px) {
             .container {
-                padding: 1.5rem 1rem 6rem 1rem;
+                padding: 1rem 1rem 4rem 1rem;
             }
-            .glass-box {
+            .glass-card {
                 padding: 1.5rem;
             }
-            h1 {
-                font-size: 2.3rem;
+            .bio-card {
+                padding: 1.5rem;
             }
-            h2 {
-                font-size: 1.9rem;
-            }
-            .category-toggle {
-                padding: 1.25rem 1.5rem;
+            .accordion-header {
+                padding: 1rem 1.25rem;
                 font-size: 1.1rem;
             }
-            .service-category.open .category-content {
-                padding: 0 1.5rem 1.5rem 1.5rem;
+            .accordion-body {
+                padding: 0 1.25rem;
+            }
+            .service-accordion.open .accordion-body {
+                padding: 0 1.25rem 1.25rem 1.25rem;
+            }
+            .bio-row {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+            .bio-label {
+                min-width: auto;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Scroll Progress Bar -->
+    <!-- Scroll Progress Indicator -->
     <div id="scroll-progress"></div>
 
-    <!-- Header Navigation with Hamburger Dropdown -->
     <header class="site-header">
         <div class="menu-container" id="menu-container">
-            <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle menu">
+            <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle navigation menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -459,225 +583,352 @@
 
     <div class="container">
         
-        <!-- Hero Section -->
-        <div class="hero-section">
-            <div class="hero-graphic">
-                <img src="1788311590795.png" alt="Bright Borngreat Headshot" onerror="this.src='https://placehold.co/160x160/001A33/D4AF37?text=Bright';">
+        <section class="hero-section">
+            <div class="headshot-wrapper">
+                <img src="1788311590795.png" alt="Bright Borngreat - Schedule Janitor" onerror="this.src='https://placehold.co/170x170/001A33/D4AF37?text=Bright';">
             </div>
-            <h1>Got a boring job on your to-do list that you keep procrastinating?<br><span style="color: var(--text-primary); font-style: italic;">Give it to me.</span></h1>
-            <p class="lead">Let me handle your repetitive, tedious, and annoying digital tasks for you, so you can enjoy your evenings and weekends in peace doing the things that actually matter to you.</p>
+            <h1>Your To-Do List Has a Few Jobs You'll Never Enjoy. <em><br>Hand Them to Me.</br></em></h1>
+            <p class="lead">I'm Bright, your Schedule Janitor. I clean up the tedious digital tasks cluttering your week, so you can enjoy your evenings and weekends in peace doing the things that actually matter to you.</p>
             
             <div class="cta-container">
-                <a href="onboarding.html" target="_blank" rel="noopener noreferrer" class="btn-gold">I Have A Job For You</a>
+                <a href="https://bborngreat.github.io/submission-form/" class="btn-gold">I Have A Job For You</a>
             </div>
-        </div>
+        </section>
 
         <hr class="decorative-hr">
 
-        <!-- What Can I Do Section -->
-        <h2>What can I do?</h2>
-        <p>Any creative or professional project you just won't enjoy doing yourself.</p>
+        <section>
+            <h2>Your Schedule Needs A Janitor</h2>
 
-        <!-- Accordion 1: Data & admin -->
-        <div class="service-category" id="cat-data">
-            <button class="category-toggle" aria-expanded="false">
-                <span class="category-title">📋 Data & admin</span>
-                <span class="chevron">▼</span>
-            </button>
-            <div class="category-content">
-                <p>I’ll handle all the messy data entry, data cleanup, and information gathering for you, so you don't waste your weekend doing it yourself.</p>
+            <p>It's Sunday night. And that spreadsheet is still a mess. That recording still isn't transcribed. That document still needs formatting.</p>
+
+            <p>None of these things is hard to do. None of it is urgent enough to panic over. But all of it is annoying enough to follow you around and fill your head with guilt.</p>
+
+            <p>It sits in the back of your mind at dinner. It's there when you're supposed to be relaxing with family or friends. And it's there on Monday morning, taking the first slice of the energy you wanted to spend on the work that actually matters like your strategy, your clients, or managing your finances.</p>
+
+            <p>You've probably blamed yourself for it.</p>
+
+            <p>You think it's because you're lazy. Or it's because you lack discipline. Or that you have poor time management.</p>
+
+            <p>But the truth is, it's none of those things. And it's not really about ‘being too busy’ or ‘not having enough time’ either.</p>
+
+            <p>The real problem is this:</p>
+
+            <!-- Glassmorphic Card Highlight -->
+            <div class="glass-card highlight">
+                Your schedule is full of work that never needed <em>you</em> in the first place.
             </div>
-        </div>
 
-        <!-- Accordion 2: Spreadsheet creation -->
-        <div class="service-category" id="cat-spreadsheet-create">
-            <button class="category-toggle" aria-expanded="false">
-                <span class="category-title">🏗️ Spreadsheet creation</span>
-                <span class="chevron">▼</span>
-            </button>
-            <div class="category-content">
-                <ul class="example-list">
-                    <li>I can enter the raw data from a document, research paper, or presentation into a clean spreadsheet you can read and interpret easily</li>
-                </ul>
+            <p>Think about it this way:</p>
+
+            <p>You wouldn't ask a surgeon to mop the operating room between surgeries, would you? That doesn't mean that mopping is a job which is beneath him. It's just that every minute he spends mopping is a minute not spent on doing the one thing only he can do; which is <em>saving lives.</em></p>
+
+            <p>Your week works the same way:</p>
+            <p>Every hour spent managing admin, cleaning up spreadsheets, or fixing routine problems is an hour stolen from strategic growth.</p>
+
+            <ul class="bullet-list">
+                <li>Your best hours are limited.</li>
+                <li>Small, boring tasks eat those hours first, because they're always there.</li>
+                <li>So the work that matters gets left behind, and the stress compounds week after week.</li>
+            </ul>
+
+            <p>A new productivity app won't fix that. A new Notion template won’t either. All these ‘solutions’ will just help you organize the same pile, treating the symptom instead of curing the disease.</p>
+        </section>
+
+        <section>
+            <h2>The Good News? It Doesn't Have To Stay This Way</h2>
+
+            <p>Picture the same week, but this time, the time-sucking list is already handled.</p>
+
+            <p>You're actually present at dinner. Your Tuesday morning goes to the thing that moves your life or business forward, instead of another mind-numbing chore.</p>
+
+            <p>If you're on this page, it means that you're someone who protects his or her best hours, and only spends them where they truly count.</p>
+
+            <blockquote class="quote-box">
+                And therefore, you deserve a helper that gives you that time back.
+            </blockquote>
+
+            <p>You owe it to yourself to have a janitor that cleans up all the pesky nuisances in your schedule for you, so you have the time, mental energy, and peace of mind to focus on the activities that actually move your life, business, and relationships forward.</p>
+
+            <div class="glass-card highlight">
+                That's exactly why I am here.
             </div>
-        </div>
+        </section>
 
-        <!-- Accordion 3: Spreadsheet cleanup -->
-        <div class="service-category" id="cat-spreadsheet-cleanup">
-            <button class="category-toggle" aria-expanded="false">
-                <span class="category-title">🧹 Spreadsheet cleanup</span>
-                <span class="chevron">▼</span>
-            </button>
-            <div class="category-content">
-                <ul class="example-list">
-                    <li>If you've already got a messy, incomprehensible spreadsheet with the data, I add formulas, charts, and other enhancements to make it easy to understand and fun to use</li>
-                </ul>
+        <section>
+            <h2>Meet Bright Borngreat: Your Very Own Personal Schedule Janitor</h2>
+
+            <p>As your schedule janitor, I'm here to clear the small, tedious stuff off your plate so you can get back to the work and life you care about.</p>
+
+            <p>Here's what I can clean up for you:</p>
+
+            <div class="accordion-group">
+                
+                <!-- Accordion 1: Content Review & Summary -->
+                <div class="service-accordion">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span class="title-text">🤏 Content Review & Summary</span>
+                        <span class="chevron">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>Got a boring long article, interview, podcast, or YouTube video you just don't wanna read or watch, but still wanna know what it says? Don't sweat it.</p>
+                        <p>Just send the link. I'll sit through it, and present you with a condensed, actionable brief and summary of the key points.</p>
+                    </div>
+                </div>
+
+                <!-- Accordion 2: Document cleanup -->
+                <div class="service-accordion">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span class="title-text">📄 Document cleanup</span>
+                        <span class="chevron">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>If you've got a document in serious need of some cleaning services, your prayers just got answered.</p>
+                        <p>Proofreading. Editing. Formatting. Inserting relevant graphics. I do it all. Give me the ugly, raw text, and receive a document that'll bring tears of joy into your eyes every time you open it!</p>
+                    </div>
+                </div>
+
+                <!-- Accordion 3: Spreadsheet creation & clean-up -->
+                <div class="service-accordion">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span class="title-text">🗂️ Spreadsheet creation & clean-up</span>
+                        <span class="chevron">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <ul class="bullet-list">
+                            <li>I can enter the raw data from a recording, research report, or presentation into a clean, presentable spreadsheet you can read and share confidently.</li>
+                            <li>And, if you've already got a messy, incomprehensible spreadsheet with the data, send it over. I'll add formulas, charts, and other enhancements to make it easy to understand and fun to use.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Accordion 4: Research -->
+                <div class="service-accordion">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span class="title-text">🧐 Research</span>
+                        <span class="chevron">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>If you've got a topic you need to research, some suppliers you need to learn about, or some work assignment you need deep context on, don't sweat it.</p>
+                        <p>Just give it to me. I'll do all the heavy digging, and give you a detailed report or comprehensive summary on my findings (whichever you prefer).</p>
+                    </div>
+                </div>
+
+                <!-- Accordion 5: Transcription -->
+                <div class="service-accordion">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span class="title-text">✍️ Transcription</span>
+                        <span class="chevron">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>If you've got a long audio, YouTube video, interview, or podcast, and you want to transcribe it into clean, well formatted text you can read instead, hit me up.</p>
+                        <p>Just shoot the link over or send me the media file, and I'll get straight to work.</p>
+                    </div>
+                </div>
+
+                <!-- Accordion 6: Translation -->
+                <div class="service-accordion">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span class="title-text">🔄 Translation</span>
+                        <span class="chevron">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>If you've got some text in English which you want to translate into French, Spanish, or German…. hit me up mon ami/mi amigo/mein freund!</p>
+                        <p>Just shoot the doc over, and I'll get it done in no time!</p>
+                    </div>
+                </div>
+
+                <!-- Accordion 7: Custom micro-apps -->
+                <div class="service-accordion">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span class="title-text">💻 Custom micro-apps</span>
+                        <span class="chevron">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>Got a software itch you desperately need to scratch, but there just isn't an app that does it quite right for you? Let me BUILD ONE just for YOU!</p>
+                        <div class="example-subtitle">Examples:</div>
+                        <ul class="bullet-list">
+                            <li>Want a habit or event tracker, with personalized features you can't find anywhere? Just describe it to me in simple words, and I'll build it for you.</li>
+                            <li>Want your own mini-game which shows a 2D cartoon face of you on the loading screen? Let's build it, impress your friends with it, and have fun with your loved ones playing a game with your name on it!</li>
+                            <li>Want a simple custom tool for automating or streamlining certain processes within your business? Just tell me what you want to see, and I'll bring it to life in no time.</li>
+                            <li>Got any specific problems in your life that no tech billionaire has thought to build a gigantic app for? You don't have to wait anymore and keep suffering. Just send me what you want to see, and let's bring your vision to life today!</li>
+                        </ul>
+                    </div>
+                </div>
+
+            <h2>Don't see your task?</h2>
+            <p>Send it anyway. So long as it's legal, reasonably simple, and can be done digitally, it's probably something I can do.</p>
+            <p>So just send it to me.</p>
+            <p>And if I review it and it turns out it's something I can't handle, I'll tell you right away so I don't waste your time.</p>
+
+            <div style="text-align: center; margin: 2.5rem 0;">
+                <a href="https://bborngreat.github.io/submission-form/" class="btn-gold">I Have A Job For You</a>
             </div>
-        </div>
+        </section>
 
-        <!-- Accordion 4: Research -->
-        <div class="service-category" id="cat-research">
-            <button class="category-toggle" aria-expanded="false">
-                <span class="category-title">🧐 Research</span>
-                <span class="chevron">▼</span>
-            </button>
-            <div class="category-content">
-                <ul class="example-list">
-                    <li>If you've got a topic you need to research, some suppliers you need to learn about, or some assignment you need deep context on, don't sweat it. Just give it to me. I'll do all the heavy digging, and give you a detailed report, comprehensive summary on my findings, or both (whichever you prefer).</li>
-                </ul>
+        <section>
+            <h2>Who Am I, And Why Am I Doing This?</h2>
+
+            <!-- BIO CARD -->
+            <div class="bio-card">
+                <div class="bio-card-header" style="display: flex; justify-content: center; width: 100%;">
+                    <div class="headshot-wrapper" style="margin: 0 auto 0.5rem auto; width: 120px; height: 120px;">
+                        <img src="1788311590795.png" alt="Bright Borngreat Headshot" onerror="this.src='https://placehold.co/120x120/001A33/D4AF37?text=Bright';">
+                    </div>
+                </div>
+
+                <div class="bio-details">
+                    <div class="bio-row">
+                        <span class="bio-label">Full Name:</span>
+                        <span class="bio-value">Bright Abubakr Sadiq Borngreat</span>
+                    </div>
+                    <div class="bio-row">
+                        <span class="bio-label">Age:</span>
+                        <span class="bio-value">18</span>
+                    </div>
+                    <div class="bio-row">
+                        <span class="bio-label">Education:</span>
+                        <span class="bio-value">Graduate of Achimota School, Class of 2026</span>
+                    </div>
+                    <div class="bio-row">
+                        <span class="bio-label">Location:</span>
+                        <span class="bio-value">Accra, Ghana (West Africa)</span>
+                    </div>
+                    <div class="bio-row">
+                        <span class="bio-label">Relationship Status:</span>
+                        <span class="bio-value">Single (😣)</span>
+                    </div>
+                    <div class="bio-row">
+                        <span class="bio-label">Children:</span>
+                        <span class="bio-value">None</span>
+                    </div>
+                    <div class="bio-row">
+                        <span class="bio-label">Interests:</span>
+                        <span class="bio-value">Business, Marketing, Sales</span>
+                    </div>
+                    <div class="bio-row">
+                        <span class="bio-label">Key Achievements:</span>
+                        <span class="bio-value">I haven't really got anything cool to show here yet. 😭 But I'm definitely working on it. 😁</span>
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <!-- Accordion 5: Transcription -->
-        <div class="service-category" id="cat-transcription">
-            <button class="category-toggle" aria-expanded="false">
-                <span class="category-title">✍️ Transcription</span>
-                <span class="chevron">▼</span>
-            </button>
-            <div class="category-content">
-                <p>If you've got a long audio, YouTube video, interview, or podcast, and you want to transcribe it into clean, well formatted text you can read instead, hit me up. Just shoot the link, or send me the media file, and I'll get straight to work.</p>
+            <p>Let me save you the trouble of wondering.</p>
+
+            <p>Yes, I'm only 18. Yes, I just finished high school. And yes, Bright Borngreat really is my name (blame my mom for that, not me).</p>
+
+            <p>This year, I ‘officially’ became an adult. And as an adult, it's time to start figuring out what I'm going to do with my life.</p>
+
+            <p>But instead of rushing straight into college or getting a slave-wage job like everyone else, I'm currently taking some time to develop the skills I need to build a business of my own.</p>
+
+            <p>My essentials like food and shelter are covered by my mom (what can I say, I'm a mummy's boy 😁). But I still need to cover my own internet bill and personal day-to-day expenses.</p>
+
+            <p><em>So rather than go around begging for money, I figured I'd make myself useful and become a Schedule Janitor instead.</em></p>
+
+            <p>I basically live on my phone, and as a result I've picked up some relevant digital skills, shortcuts, and knowledge.</p>
+
+            <p>Therefore I figured it wouldn't hurt to offer those skills to people who need them, in order to pay for my internet addiction and personal expenses.</p>
+
+            <p>So here's my simple offer:</p>
+            <p>If you've got something tedious sitting on your to-do list, I'll use the digital acumen I’ve built over the last few years to do it for you.</p>
+
+            <div class="glass-card highlight" style="text-align: left; color: var(--text-primary); font-size: 1.1rem; font-weight: normal; margin: 2rem 0;">
+                <p>You get the annoying task off your plate and free up your schedule to do more beneficial stuff with your day. And in return, I get paid a small fee for taking the hassle off your plate.</p>
+                <p style="font-weight: 600; color: var(--accent-gold); font-size: 1.25rem; margin-bottom: 0; text-align: center;">It's a win-win for everyone!</p>
             </div>
-        </div>
+        </section>
 
-        <!-- Accordion 6: Translation -->
-        <div class="service-category" id="cat-translation">
-            <button class="category-toggle" aria-expanded="false">
-                <span class="category-title">🔄 Translation</span>
-                <span class="chevron">▼</span>
-            </button>
-            <div class="category-content">
-                <ul class="example-list">
-                    <li>If you've got some text in English which you want to translate into French, Spanish, or German…. hit me up mon ami /mi amigo/mein Freund! And if you've got it in any of these languages and want to translate it into any of these languages (😂), I do that too! French to Spanish. German to English. And everything in between, I'm your guy. Just shoot the doc over, and I'll get it done in no time!</li>
-                </ul>
+        <section>
+            <h2>So If You've Got A Tedious Job You'd Rather Not Do Yourself…</h2>
+
+            <div class="steps-container">
+                <div class="step-item">
+                    <div class="step-number">1.</div>
+                    <div class="step-body">
+                        <strong>Click the button below</strong> and fill out a short form about the task you need me to do. It only takes under 3 minutes.
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">2.</div>
+                    <div class="step-body">
+                        <strong>I confirm and quote.</strong> I'll tell you right away if I can do it and what it costs. Most jobs run from $5 (like document formatting) to $30+ (like app builds). Priced by the job, never by the hour.
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">3.</div>
+                    <div class="step-body">
+                        <strong>I do the work.</strong> You preview it, and I fix anything that's off (one revision included).
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">4.</div>
+                    <div class="step-body">
+                        <strong>You only pay when you're happy with the results.</strong> Then your finished work is delivered.
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <!-- Accordion 7: Content Review & Summary -->
-        <div class="service-category" id="cat-content-review">
-            <button class="category-toggle" aria-expanded="false">
-                <span class="category-title">🤏 Content Review & Summary</span>
-                <span class="chevron">▼</span>
-            </button>
-            <div class="category-content">
-                <p>Got a long article, interview, podcast, or YouTube video you just don't wanna read or watch, but still wanna know what it says? Don't sweat it. Just send the link. I'll sit through it, and present you with a condensed, actionable brief and summary of the key points.</p>
+            <!-- Closing Section -->
+            <div class="closing-section">
+                <p class="lead" style="margin-bottom: 2rem; color: var(--text-primary); font-size: 1.3rem;">
+                    Enough yapping. Click that button, and let's get your week cleaned up.
+                </p>
+                <a href="https://bborngreat.github.io/submission-form/" class="btn-gold">Submit Your Task</a>
             </div>
-        </div>
+        </section>
 
-        <!-- Accordion 8: Document cleanup -->
-        <div class="service-category" id="cat-doc-cleanup">
-            <button class="category-toggle" aria-expanded="false">
-                <span class="category-title">📄 Document cleanup</span>
-                <span class="chevron">▼</span>
-            </button>
-            <div class="category-content">
-                <p>If you've got a document in serious need of some cleaning services, your prayers just got answered. Proofreading. Editing. Formatting. Inserting relevant graphics. I do it all. Give me the ugly, raw text, and receive a document that'll bring tears of joy into your eyes every time you open it!</p>
-            </div>
-        </div>
-
-        <!-- Accordion 9: Custom micro-app development -->
-        <div class="service-category" id="cat-custom-app">
-            <button class="category-toggle" aria-expanded="false">
-                <span class="category-title">🧑‍💻 Custom micro-app development</span>
-                <span class="chevron">▼</span>
-            </button>
-            <div class="category-content">
-                <p>Got a software itch you desperately need to scratch, but there just isn't an app that does it quite right for you? Let me BUILD ONE just for YOU!</p>
-                <p class="example-label">Examples:</p>
-                <ul class="example-list">
-                    <li>Want a habit or event tracker, with personalized features you can't find anywhere? Just describe it to me in simple words, and I'll build it for you.</li>
-                    <li>Want your own mini-game which shows a cartoon face of you on the loading screen or homepage? Let's build it, impress your friends with it, and have fun with your loved ones playing a game with your name on it!</li>
-                    <li>Want a simple custom tool for automating or streamlining certain processes within your business? Just tell me what you want to see, and I'll bring it to life.</li>
-                    <li>Got any specific problems in your life that no tech billionaire has thought to build a gigantic app for? You don't have to wait anymore and keep suffering. Just send me what you want to see, and let's bring your vision to life today!</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Don't see your task? -->
-        <h2>Don't see your task?</h2>
-        <p>Send it anyway. So long as it's legal, reasonably simple, and can be done digitally, it's probably something Mr. OddJobs can do.</p>
-        <p>So just send it to me.</p>
-        <p>And if I see it and it turns out it's something I can't handle, I'll tell you immediately so I don't waste your time.</p>
-
-        <h2>Why am I doing this?</h2>
-        <p>Hi! My name is Bright Borngreat (Yes, it's my actual government name; blame my mom for that, not me). I'm 18 years old, and I recently graduated from high school.</p>
-        <p>But instead of rushing straight into college or getting a slave-wage job, I'm currently taking some time —a gap year of sorts— to figure out what comes next.</p>
-        <p>My essentials like food and shelter are covered by my mom, but I need to cover my own internet bill and petty day-to-day expenses.</p>
-        <p>So rather than go around begging for money, I figured I'd make myself useful instead.</p>
-        <p>I basically live on my phone, and as a result I've picked up a few relevant digital skills, shortcuts, and knowledge.</p>
-        <p>Therefore I figured it wouldn't hurt to offer those skills to people who need them, in order to pay for my internet addiction and petty costs.</p>
-        <p>So here's my simple offer:<br>If you've got something tedious sitting on your to-do list, I'll use the digital acumen I’ve built over the last few years to do it for you.</p>
-
-        <!-- Popping Quote Card -->
-        <div class="glass-box" style="text-align: center; border-color: var(--border-highlight);">
-            <p style="margin-bottom: 1rem; color: var(--text-muted); font-size: 1.2rem; font-style: italic;">You get the annoying task off your plate and free up time to do more fun stuff with your day. And in return, I get paid a few pennies for the work.</p>
-            <p style="font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--accent-gold); margin-top: 1.5rem; font-weight: 700;">It's a win-win for everyone!</p>
-        </div>
-
-        <h2>So if you've got a tedious job you just don't wanna do yourself, the next step is simple;</h2>
-        
-        <ul class="steps-list">
-            <li>
-                <span class="step-num">1.</span>
-                Click that big juicy “I Have A Job For You” button.
-            </li>
-            <li>
-                <span class="step-num">2.</span>
-                You'll be redirected to a page that will walk you through how to submit your task and receive your results once I'm done.
-            </li>
-            <li>
-                <span class="step-num">3.</span>
-                I'll handle the task, hand over the results to you, and we'll either say our goodbyes (if you want us to) or become really good friends.
-            </li>
-        </ul>
-
-        <!-- Closing CTA -->
-        <div class="closing-section" id="checkout">
-            <h2 style="border: none; margin-bottom: 1rem;">Super simple.</h2>
-            <p class="lead" style="margin-bottom: 2.5rem;">Enough yapping on this page. Click that button, and let's meet on the other side.</p>
-            <a href="onboarding.html" target="_blank" rel="noopener noreferrer" class="btn-gold">I Have A Job For You</a>
-        </div>
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Bright Borngreat &copy; 2026. All rights reserved.</p>
+        </footer>
 
     </div>
 
-    <!-- Vanilla JS for Scroll Progress Bar, Hamburger Dropdown & Accordions -->
     <script>
-        // Scroll progress bar
+        // Scroll progress bar logic
         window.addEventListener('scroll', () => {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (winScroll / height) * 100;
-            document.getElementById('scroll-progress').style.width = scrolled + '%';
-        });
-
-        // Hamburger Menu Toggle
-        const menuContainer = document.getElementById('menu-container');
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-
-        hamburgerBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            menuContainer.classList.toggle('active');
-        });
-
-        // Close dropdown when clicking outside
-        window.addEventListener('click', () => {
-            if (menuContainer.classList.contains('active')) {
-                menuContainer.classList.remove('active');
+            const progressBar = document.getElementById('scroll-progress');
+            if (progressBar) {
+                progressBar.style.width = scrolled + '%';
             }
         });
 
-        // Accordion functionality for service categories
-        document.querySelectorAll('.category-toggle').forEach(button => {
+        // Hamburger Menu Logic
+        const menuContainer = document.getElementById('menu-container');
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+
+        if (hamburgerBtn && menuContainer) {
+            hamburgerBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                menuContainer.classList.toggle('active');
+            });
+
+            window.addEventListener('click', () => {
+                if (menuContainer.classList.contains('active')) {
+                    menuContainer.classList.remove('active');
+                }
+            });
+        }
+
+        // Service Accordions Toggle Logic
+        document.querySelectorAll('.accordion-header').forEach(button => {
             button.addEventListener('click', (e) => {
                 e.stopPropagation();
-                const category = button.closest('.service-category');
-                const isOpen = category.classList.contains('open');
+                const accordion = button.closest('.service-accordion');
+                const isOpen = accordion.classList.contains('open');
 
-                // Toggle current
+                // Toggle selected accordion
                 if (isOpen) {
-                    category.classList.remove('open');
+                    accordion.classList.remove('open');
                     button.setAttribute('aria-expanded', 'false');
                 } else {
-                    category.classList.add('open');
+                    accordion.classList.add('open');
                     button.setAttribute('aria-expanded', 'true');
                 }
             });
