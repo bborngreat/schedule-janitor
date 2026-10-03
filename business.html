@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bright Borngreat - Operational Leverage for Solo Founders</title>
+    <script data-goatcounter="https://bborngreat.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+    <!-- Google Fonts: Cormorant Garamond (Headings) & Parkinsans (Body Text) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Parkinsans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #001A33;
+            --card-bg: rgba(0, 40, 80, 0.55);
+            --card-hover-bg: rgba(0, 50, 100, 0.65);
+            --border-subtle: rgba(212, 175, 55, 0.15);
+            --border-highlight: rgba(212, 175, 55, 0.4);
+            --text-primary: #EDEADE;
+            --text-muted: #BACEE9;
+            --accent-gold: #D4AF37;
+            --accent-gold-hover: #F0C846;
+            --accent-glow: rgba(212, 175, 55, 0.25);
+            --max-width: 760px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        button:focus-visible {
+            outline: none;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                linear-gradient(to right, rgba(255,255,255,.02) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,255,255,.02) 1px, transparent 1px);
+            background-size: 40px 40px, 40px 40px;
+            color: var(--text-primary);
+            font-family: 'Parkinsans', sans-serif;
+            line-height: 1.75;
+            font-size: 1.1rem;
+            overflow-x: hidden;
+            padding-top: 4px;
+        }
+
+        /* Top Scroll Progress Bar */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-gold), #FFF);
+            width: 0%;
+            z-index: 9999;
+            transition: width 0.1s ease-out;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.6);
+        }
+
+        /* Header Navigation */
+        .site-header {
+            position: relative;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 1.5rem 1.5rem 0 1.5rem;
+            display: flex;
+            justify-content: flex-end;
+            z-index: 1000;
+        }
+
+        .menu-container {
+            position: relative;
+        }
+
+        .hamburger-btn {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-subtle);
+            border-top: 1px solid var(--border-highlight);
+            border-radius: 12px;
+            width: 46px;
+            height: 46px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .hamburger-btn:hover {
+            border-color: var(--accent-gold);
+            background: rgba(0, 50, 100, 0.8);
+        }
+
+        .hamburger-btn span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background-color: var(--accent-gold);
+            border-radius: 2px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .menu-container.active .hamburger-btn span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        .menu-container.active .hamburger-btn span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-container.active .hamburger-btn span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 56px;
+            right: 0;
+            width: 200px;
+            background: rgba(0, 30, 60, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-subtle);
+            border-top: 1px solid var(--border-highlight);
+            border-radius: 14px;
+            padding: 0.5rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .menu-container.active .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu a {
+            color: var(--text-primary);
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .dropdown-menu a:hover {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--accent-gold);
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 1.5rem 1.5rem 6rem 1.5rem;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--accent-gold);
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5.2vw, 3.6rem);
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 em {
+            color: var(--text-primary);
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 2.7rem);
+            margin-top: 4.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 0.75rem;
+            line-height: 1.25;
+        }
+
+        p {
+            margin-bottom: 1.6rem;
+            color: var(--text-primary);
+        }
+
+        .lead {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        /* Headshot Image Styling */
+        .headshot-wrapper {
+            margin: 0 auto 2.5rem auto;
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--accent-gold);
+            box-shadow: 0 0 30px var(--accent-glow), 0 12px 25px rgba(0, 0, 0, 0.6);
+            background-color: var(--bg-color);
+            position: relative;
+        }
+        
+        .headshot-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 90%;
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            text-align: center;
+            padding: 1rem 0 3rem 0;
+        }
+
+        .cta-container {
+            margin: 2.5rem 0 1rem 0;
+        }
+
+        /* Buttons */
+        .btn-gold {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-gold), #C19A2B);
+            color: #000;
+            font-family: 'Parkinsans', sans-serif;
+            font-weight: 700;
+            font-size: 1.15rem;
+            padding: 1.1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 2px 0 rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3), 0 10px 25px rgba(0,0,0,0.5);
+            background: linear-gradient(135deg, var(--accent-gold-hover), var(--accent-gold));
+        }
+
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-subtle);
+            border-top: 1px solid var(--border-highlight);
+            border-radius: 20px;
+            padding: 2rem 2.25rem;
+            margin: 2.5rem 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+            position: relative;
+        }
+
+        .glass-card.highlight {
+            border-color: var(--border-highlight);
+            background: linear-gradient(145deg, rgba(0, 50, 100, 0.6), rgba(0, 30, 60, 0.7));
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.15), 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Blockquotes */
+        blockquote.quote-box {
+            border-left: 4px solid var(--accent-gold);
+            padding: 1.25rem 1.75rem;
+            margin: 2.5rem 0;
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: 0 16px 16px 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+        }
+
+        /* Lists Styling */
+        ul.bullet-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 1.5rem 0;
+        }
+
+        ul.bullet-list li {
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        ul.bullet-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0.2rem;
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        /* Numbered Steps */
+        .steps-container {
+            margin: 2.5rem 0;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            line-height: 1;
+            min-width: 40px;
+        }
+
+        .step-body {
+            flex: 1;
+            font-size: 1.1rem;
+            padding-top: 0.2rem;
+        }
+
+        /* Bio Card Styling */
+        .bio-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-highlight);
+            border-radius: 24px;
+            padding: 2.25rem;
+            margin: 3rem 0;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .bio-card-header {
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+            }
+        }
+
+        .bio-card .headshot-wrapper {
+            margin: 0 auto;
+            flex-shrink: 0;
+        }
+
+        .bio-details {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+        }
+
+        .bio-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            font-size: 1.05rem;
+            border-bottom: 1px dashed rgba(212, 175, 55, 0.15);
+            padding-bottom: 0.5rem;
+        }
+
+        .bio-row:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .bio-label {
+            font-weight: 700;
+            color: var(--accent-gold);
+            min-width: 140px;
+        }
+
+        .bio-value {
+            color: var(--text-primary);
+            flex: 1;
+        }
+
+        /* Accordion / Dropdown Styles */
+        .accordion-group {
+            margin: 2.5rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .service-accordion {
+            border: 1px solid var(--border-subtle);
+            border-top: 1px solid var(--border-highlight);
+            border-radius: 16px;
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            overflow: hidden;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .service-accordion:hover {
+            border-color: var(--border-highlight);
+            background: var(--card-hover-bg);
+        }
+
+        .accordion-header {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-family: 'Parkinsans', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            padding: 1.25rem 1.75rem;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            transition: color 0.2s ease;
+        }
+
+        .accordion-header:hover {
+            color: var(--accent-gold);
+        }
+
+        .accordion-header .title-text {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .accordion-header .chevron {
+            font-size: 0.9rem;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--accent-gold);
+        }
+
+        .service-accordion.open .chevron {
+            transform: rotate(180deg);
+        }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.45s ease, padding 0.3s ease;
+            padding: 0 1.75rem;
+        }
+
+        .service-accordion.open .accordion-body {
+            max-height: 1500px;
+            padding: 0 1.75rem 1.75rem 1.75rem;
+        }
+
+        .accordion-body p {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+
+        .accordion-body p:last-child {
+            margin-bottom: 0;
+        }
+
+        .example-subtitle {
+            font-weight: 600;
+            color: var(--accent-gold);
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.05rem;
+        }
+
+        /* Decorative Divider */
+        .decorative-hr {
+            border: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-highlight), transparent);
+            margin: 4rem 0;
+        }
+
+        /* Closing CTA Block */
+        .closing-section {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 3rem 1.5rem;
+            background: var(--card-bg);
+            border-radius: 24px;
+            border: 1px solid var(--border-highlight);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem 1rem 4rem 1rem;
+            }
+            .glass-card {
+                padding: 1.5rem;
+            }
+            .bio-card {
+                padding: 1.5rem;
+            }
+            .accordion-header {
+                padding: 1rem 1.25rem;
+                font-size: 1.1rem;
+            }
+            .accordion-body {
+                padding: 0 1.25rem;
+            }
+            .service-accordion.open .accordion-body {
+                padding: 0 1.25rem 1.25rem 1.25rem;
+            }
+            .bio-row {
+                flex-direction: column;
+                gap: 0.25rem;
+            }
+            .bio-label {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Scroll Progress Indicator -->
+    <div id="scroll-progress"></div>
+
+    <header class="site-header">
+        <div class="menu-container" id="menu-container">
+            <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="dropdown-menu">
+                <a href="faq.html">FAQs</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="headshot-wrapper">
+                <img src="1788311590795.png" alt="Bright Borngreat - Schedule Janitor" onerror="this.src='https://placehold.co/170x170/001A33/D4AF37?text=Bright';">
+            </div>
+            <h1>Stop Losing Your Best Hours To<em><br>Digital Busywork.</br></em></h1>
+            <p class="lead">I'm Bright, your Schedule Janitor. I clean up messy spreadsheets, rough decks, unused recordings and repetitive tasks, so you can get back to the work only you can do.</p>
+            <p>Flat-rate quote · 1 revision included · Pay only after you approve the preview</p>
+            
+            <div class="cta-container">
+                <a href="https://bborngreat.github.io/submission-form/business.html" class="btn-gold">Delegate a Task</a>
+            </div>
+        </section>
+
+        <hr class="decorative-hr">
+
+        <!-- Problem Section -->
+        <section>
+            <h2>Your Operations Need a Janitor</h2>
+
+            <p>It's Sunday night. That customer dataset is still unformatted. That CRM list is full of duplicate entries. That meeting transcript hasn't been turned into an executive brief. And that repetitive workflow still needs a quick automation script.</p>
+
+            <p>None of these tasks are mathematically difficult. But as a founder, freelancer or small-team owner, every single one of them acts as operational drag.</p>
+
+            <p>It follows you around through the weekend. It sits in the back of your mind while you're trying to recharge. And on Monday morning, it burns the highest-value slice of your creative bandwidth before you even touch client growth, sales, or product development.</p>
+
+            <p>You don't lack discipline. And you certainly aren't lazy.</p>
+
+            <p>The real issue is simple:</p>
+
+            <!-- Glassmorphic Card Highlight -->
+            <div class="glass-card highlight">
+                Your schedule is crammed with $15/hr tasks that should never require founder intervention.
+            </div>
+
+            <p>Think about it this way:</p>
+
+            <p>You wouldn't ask a lead surgeon to mop the operating room between surgeries. It's not that mopping is beneath them—it's that every minute spent mopping is a minute stolen from the one thing only they can do: <em>saving lives.</em></p>
+
+            <p>Your business operates on the exact same law of leverage:</p>
+            <p>Every hour you spend cleaning up spreadsheets, reformatting client decks, or manually copying data across tools is an hour stolen from growing revenue.</p>
+
+            <ul class="bullet-list">
+                <li>Your high-focus energy windows are strictly limited.</li>
+                <li>Small operational friction eats those peak hours first because it's urgent and visible.</li>
+                <li>Strategic growth gets pushed to "tomorrow," and operational fatigue compounds week after week.</li>
+            </ul>
+
+            <p>Another complex project management app won't fix this. A new Notion template won't either. They just re-organize the mess without taking the execution off your plate.</p>
+        </section>
+
+        <!-- Solution Section -->
+        <section>
+            <h2>The Fix: Asynchronous Operational Leverage</h2>
+
+            <p>Picture your coming week with the tedious operational queue already cleared.</p>
+
+            <p>Your Tuesday morning begins with 100% focus on strategic client deals, product polish, or sales, while the background admin, data cleanup, and micro-tool building are executed asynchronously for you.</p>
+
+            <p>If you're on this page, you understand that founder leverage isn't about working more hours—it's about protecting your highest-value time relentlessly.</p>
+
+            <blockquote class="quote-box">
+                You deserve an execution partner who takes friction off your plate quietly, quickly, and reliably.
+            </blockquote>
+
+            <p>That is why I created Schedule Janitor: to give solo founders an instant, zero-overhead way to delegate digital micro-tasks and custom internal tools without hiring a full-time assistant or dealing with slow agency overhead.</p>
+
+            <div class="glass-card highlight">
+                Clean execution. Zero hand-holding. Fast turnaround.
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section>
+            <h2>What I Clean Up For Busy Founders</h2>
+
+            <p>Send over the brief, raw files, or loom video, and I'll deliver clean, production-ready output:</p>
+
+            <div class="accordion-group">
+                
+                <!-- Accordion 1: Custom Micro-Tools & Automations -->
+                <div class="service-accordion">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span class="title-text">⚡ Custom Internal Micro-Tools & Scripts</span>
+                        <span class="chevron">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>Have a repetitive manual step in your business that should take 30 seconds instead of 30 minutes? I build lightweight, custom micro-tools and scripts tailored specifically to your workflow.</p>
+                        <div class="example-subtitle">Common Founder Requests:</div>
+                        <ul class="bullet-list">
+                            <li>Custom web tools or web scrapers to aggregate lead data or monitor competitor updates.</li>
+                            <li>Internal client calculators, custom proposal estimators, or automated formatters.</li>
+                            <li>Lightweight web dashboards to centralize metrics from multiple sources without expensive software subscriptions.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Accordion 2: Data & Spreadsheet Operations -->
+                <div class="service-accordion">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span class="title-text">🗂️ Data Operations & Spreadsheet Cleanup</span>
+                        <span class="chevron">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>Messy data leads to poor decisions and wasted time. I audit, restructure, and transform chaotic datasets into clean, executive-ready systems.</p>
+                        <ul class="bullet-list">
+                            <li>Clean up messy CSV exports, deduplicate contact lists, and format CRM databases.</li>
+                            <li>Build custom formulas, lookup functions, and visual summary charts into Google Sheets or Excel.</li>
+                            <li>Extract raw unstructured text from invoices, PDFs, or research notes into structured databases.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Accordion 3: Research & Executive Summaries -->
+                <div class="service-accordion">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span class="title-text">🧐 Research & Competitive Briefings</span>
+                        <span class="chevron">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>Need deep context on a competitor, potential vendor, software tool, or market niche, but don't have 4 hours to scour the web?</p>
+                        <p>Send me the brief or query. I perform deep web research and present a condensed, bulleted executive brief with key facts, comparison metrics, and links.</p>
+                    </div>
+                </div>
+
+                <!-- Accordion 4: Document & Pitch Polish -->
+                <div class="service-accordion">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span class="title-text">📄 Document, Deck & Proposal Formatting</span>
+                        <span class="chevron">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>Turn rough drafts and unformatted notes into sleek, professional client deliverables that look like they came from a high-end agency.</p>
+                        <p>Proofreading, formatting, styling typography, adding brand color accents, and structuring client proposals, whitepapers, or pitch presentations.</p>
+                    </div>
+                </div>
+
+                <!-- Accordion 5: Media & Content Processing -->
+                <div class="service-accordion">
+                    <button class="accordion-header" aria-expanded="false">
+                        <span class="title-text">✍️ Audio/Video Processing & Transcription</span>
+                        <span class="chevron">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <p>Convert raw voice notes, podcast recordings, client interviews, or team calls into structured written assets.</p>
+                        <p>Receive clean verbatim transcripts or executive summaries highlighting actionable takeaways, timestamps, and key decisions.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <h2>Have a Unique Operational Bottleneck?</h2>
+            <p>If it can be done digitally, logically, and asynchronously, I can likely execute it for you. Submit your task brief, and if it falls outside my capabilities, I will tell you upfront in under 2 hours so you never waste time.</p>
+
+            <div style="text-align: center; margin: 2.5rem 0;">
+                <a href="https://bborngreat.github.io/submission-form/business.html" class="btn-gold">Delegate a Task Now</a>
+            </div>
+        </section>
+
+        <!-- Founder Bio Section -->
+        <section>
+            <h2>Who Is Behind Schedule Janitor?</h2>
+
+            <!-- BIO CARD -->
+            <div class="bio-card">
+                <div class="bio-card-header" style="display: flex; justify-content: center; width: 100%;">
+                    <div class="headshot-wrapper" style="margin: 0 auto 0.5rem auto; width: 120px; height: 120px;">
+                        <img src="1788311590795.png" alt="Bright Borngreat Headshot" onerror="this.src='https://placehold.co/120x120/001A33/D4AF37?text=Bright';">
+                    </div>
+                </div>
+
+                <div class="bio-details">
+                    <div class="bio-row">
+                        <span class="bio-label">Full Name:</span>
+                        <span class="bio-value">Bright Abubakr Sadiq Borngreat</span>
+                    </div>
+                    <div class="bio-row">
+                        <span class="bio-label">Role:</span>
+                        <span class="bio-value">Founder & Task Execution Specialist</span>
+                    </div>
+                    <div class="bio-row">
+                        <span class="bio-label">Location:</span>
+                        <span class="bio-value">Accra, Ghana (Operating Globally / Asynchronously)</span>
+                    </div>
+                    <div class="bio-row">
+                        <span class="bio-label">Core Focus:</span>
+                        <span class="bio-value">Operational Bottlenecks, Data Operations & Micro-Tools</span>
+                    </div>
+                    <div class="bio-row">
+                        <span class="bio-label">Turnaround:</span>
+                        <span class="bio-value">24–48 Hours on Standard Directives</span>
+                    </div>
+                </div>
+            </div>
+
+            <p>I am Bright Borngreat—an 18-year-old developer and operator obsessed with efficiency, speed, and digital leverage.</p>
+
+            <p>While most young builders focus on building massive apps no one asked for, I focus on solving the immediate, unglamorous operational friction that holds real business owners back every single day.</p>
+
+            <p>I operate without corporate bloat, unnecessary discovery meetings, or agency retainers. You give me a clear task directive or a 2-minute Loom video, and I execute it quickly, accurately, and silently.</p>
+
+            <div class="glass-card highlight" style="text-align: left; color: var(--text-primary); font-size: 1.1rem; font-weight: normal; margin: 2rem 0;">
+                <p>You buy back high-value hours to focus on strategy and revenue. I build my reputation and track record in public by delivering flawless execution.</p>
+                <p style="font-weight: 600; color: var(--accent-gold); font-size: 1.25rem; margin-bottom: 0; text-align: center;">Pure leverage. Zero fluff.</p>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section>
+            <h2>How Delegation Works</h2>
+
+            <div class="steps-container">
+                <div class="step-item">
+                    <div class="step-number">1.</div>
+                    <div class="step-body">
+                        <strong>Submit Your Task Brief.</strong> Click the button below, describe the job, attach any raw files or paste a Loom video link (takes 2 minutes).
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">2.</div>
+                    <div class="step-body">
+                        <strong>Receive a Fast Quote.</strong> I review the scope and reply with a fixed, flat-rate quote. No hourly billing, hidden charges, or unexpected costs.
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">3.</div>
+                    <div class="step-body">
+                        <strong>Execution & Delivery.</strong> I complete the task within 24 to 48 hours and send over the preview for your review (includes 1 revision round).
+                    </div>
+                </div>
+
+                <div class="step-item">
+                    <div class="step-number">4.</div>
+                    <div class="step-body">
+                        <strong>Review & Release.</strong> You pay only after you review the work and are completely satisfied with the result.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Closing Section -->
+            <div class="closing-section">
+                <p class="lead" style="margin-bottom: 2rem; color: var(--text-primary); font-size: 1.3rem;">
+                    Ready to buy back your week? Delegate your first operational bottleneck today.
+                </p>
+                <a href="https://bborngreat.github.io/submission-form/business.html" class="btn-gold">Submit Your Task Brief</a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Bright Borngreat &copy; 2026. Schedule Janitor Operations. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Scroll progress bar logic
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            const progressBar = document.getElementById('scroll-progress');
+            if (progressBar) {
+                progressBar.style.width = scrolled + '%';
+            }
+        });
+
+        // Hamburger Menu Logic
+        const menuContainer = document.getElementById('menu-container');
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+
+        if (hamburgerBtn && menuContainer) {
+            hamburgerBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                menuContainer.classList.toggle('active');
+            });
+
+            window.addEventListener('click', () => {
+                if (menuContainer.classList.contains('active')) {
+                    menuContainer.classList.remove('active');
+                }
+            });
+        }
+
+        // Service Accordions Toggle Logic
+        document.querySelectorAll('.accordion-header').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const accordion = button.closest('.service-accordion');
+                const isOpen = accordion.classList.contains('open');
+
+                // Toggle selected accordion
+                if (isOpen) {
+                    accordion.classList.remove('open');
+                    button.setAttribute('aria-expanded', 'false');
+                } else {
+                    accordion.classList.add('open');
+                    button.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
